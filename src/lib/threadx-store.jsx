@@ -6,6 +6,8 @@ const CART_KEY = "threadx-cart-v1";
 
 export function StoreProvider({ children }) {
   const [cart, setCart] = useState([]);
+  const [notice, setNotice] = useState("");
+  const [lastOrder, setLastOrder] = useState(null);
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
@@ -55,7 +57,11 @@ export function StoreProvider({ children }) {
   }, [lines]);
   const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
-  const value = useMemo(() => ({ cart, lines, totals, itemCount, addToCart, setQuantity, removeFromCart, clearCart }), [cart, lines, totals, itemCount, addToCart, setQuantity, removeFromCart, clearCart]);
+  const showNotice = useCallback((message) => {
+    setNotice(message);
+    window.setTimeout(() => setNotice(""), 2600);
+  }, []);
+  const value = useMemo(() => ({ cart, lines, totals, itemCount, notice, showNotice, lastOrder, setLastOrder, addToCart, setQuantity, removeFromCart, clearCart }), [cart, lines, totals, itemCount, notice, showNotice, lastOrder, addToCart, setQuantity, removeFromCart, clearCart]);
 
   return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>;
 }
