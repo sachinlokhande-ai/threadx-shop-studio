@@ -4,8 +4,8 @@ import { PageFrame } from "@/components/threadx-shell";
 
 export const Route = createFileRoute("/shop")({
   validateSearch: (search: Record<string, unknown>) => ({
-    category: typeof search.category === "string" ? search.category : "",
-    q: typeof search.q === "string" ? search.q : "",
+    category: typeof search["category"] === "string" ? search["category"] : "",
+    q: typeof search["q"] === "string" ? search["q"] : "",
   }),
   head: () => ({ meta: [
     { title: "Shop all tees — THREADX India" },
