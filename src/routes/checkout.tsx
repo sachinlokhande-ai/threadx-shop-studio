@@ -54,7 +54,7 @@ function CheckoutPage() {
         {lines.length === 0 ? (
           <div className="mt-14 border border-dashed border-border px-6 py-20 text-center">
             <p className="text-sm text-muted-foreground">Your bag is empty — add something before checking out.</p>
-            <Button asChild className="mt-6 rounded-sm"><Link to="/shop">Shop all tees</Link></Button>
+            <Button asChild className="mt-6 rounded-sm"><Link to="/shop" search={{}}>Shop all tees</Link></Button>
           </div>
         ) : (
           <form onSubmit={placeOrder} className="mt-10 grid gap-10 lg:grid-cols-[1.7fr_1fr] lg:gap-14">

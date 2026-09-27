@@ -52,7 +52,7 @@ function OrderSuccessPage() {
         ) : (
           <p className="mt-3 text-sm text-muted-foreground">Thanks for shopping with THREADX.</p>
         )}
-        <Button asChild className="mt-10 rounded-sm"><Link to="/shop">Continue shopping <ArrowRight /></Link></Button>
+        <Button asChild className="mt-10 rounded-sm"><Link to="/shop" search={{}}>Continue shopping <ArrowRight /></Link></Button>
       </main>
     </PageFrame>
   );
