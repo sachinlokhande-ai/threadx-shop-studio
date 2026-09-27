@@ -33,7 +33,7 @@ function CartPage() {
           <div className="mt-14 flex flex-col items-center gap-5 border border-dashed border-border px-6 py-20 text-center">
             <ShoppingBag className="size-10 text-muted-foreground" />
             <p className="max-w-sm text-sm leading-6 text-muted-foreground">Your bag is empty. Go find a tee that feels like you.</p>
-            <Button asChild className="rounded-sm"><Link to="/shop">Shop all tees <ArrowRight /></Link></Button>
+            <Button asChild className="rounded-sm"><Link to="/shop" search={{}}>Shop all tees <ArrowRight /></Link></Button>
           </div>
         ) : (
           <div className="mt-10 grid gap-10 lg:grid-cols-[1.7fr_1fr] lg:gap-14">
@@ -78,7 +78,7 @@ function CartPage() {
               </dl>
               {totals.delivery > 0 && <p className="mt-3 text-xs text-muted-foreground">Add {inr(999 - totals.subtotal)} more for free delivery.</p>}
               <Button asChild className="mt-6 w-full rounded-sm"><Link to="/checkout">Proceed to checkout <ArrowRight /></Link></Button>
-              <Link to="/shop" className="mt-4 block text-center text-xs text-muted-foreground underline-offset-4 hover:underline">Continue shopping</Link>
+              <Link to="/shop" search={{}} className="mt-4 block text-center text-xs text-muted-foreground underline-offset-4 hover:underline">Continue shopping</Link>
             </aside>
           </div>
         )}
