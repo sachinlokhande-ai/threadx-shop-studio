@@ -19,7 +19,7 @@ export const Route = createFileRoute("/products/$productId")({
     { property: "og:title", content: `${loaderData?.name ?? "Shop tees"} — THREADX` },
     { property: "og:description", content: loaderData?.description ?? "Thoughtfully made tees, ready for their new favourite person." },
   ] }),
-  notFoundComponent: () => <PageFrame><div className="mx-auto max-w-2xl px-5 py-24 text-center"><h1 className="font-display text-3xl font-semibold">That tee has wandered off.</h1><Link to="/shop" className="mt-5 inline-flex underline underline-offset-4">Find it another way</Link></div></PageFrame>,
+  notFoundComponent: () => <PageFrame><div className="mx-auto max-w-2xl px-5 py-24 text-center"><h1 className="font-display text-3xl font-semibold">That tee has wandered off.</h1><Link to="/shop" search={{ category: "", q: "" }} className="mt-5 inline-flex underline underline-offset-4">Find it another way</Link></div></PageFrame>,
   component: ProductDetail,
 });
 
@@ -38,7 +38,7 @@ function ProductDetail() {
   };
   const related = products.filter((item) => item.id !== product.id).sort((a, b) => Number(b.category === product.category) - Number(a.category === product.category)).slice(0, 4);
   return <PageFrame><main className="mx-auto max-w-[1440px] px-5 pb-16 pt-5 sm:px-8 sm:pt-7 lg:px-12">
-    <Link to="/shop" className="mb-6 inline-flex items-center gap-2 text-[11px] text-muted-foreground hover:text-foreground"><ArrowLeft className="size-3.5"/> Shop the collection</Link>
+    <Link to="/shop" search={{ category: "", q: "" }} className="mb-6 inline-flex items-center gap-2 text-[11px] text-muted-foreground hover:text-foreground"><ArrowLeft className="size-3.5"/> Shop the collection</Link>
     <div className="grid gap-8 sm:gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(340px,.9fr)] lg:gap-16"><div className="relative aspect-[4/4.65] overflow-hidden bg-card sm:aspect-[1/1] lg:aspect-[.93/1]"><img src={product.image} alt={product.name} width={1024} height={1024} fetchPriority="high" className="size-full object-cover"/><span className="absolute left-4 top-4 bg-background px-3 py-1.5 text-[10px] font-medium uppercase tracking-wider">{product.category}</span></div>
       <section className="py-1 sm:py-4 lg:py-8"><Eyebrow>Better basics, better days</Eyebrow><h1 className="mt-2 font-display text-3xl font-semibold leading-tight sm:text-[38px]">{product.name}<span className="text-accent">.</span></h1><div className="mt-3 flex items-center gap-2"><span className="flex items-center gap-1 text-xs"><Star className="size-3.5 fill-accent text-accent"/>{product.rating}</span><a href="#reviews" className="text-[11px] text-muted-foreground underline underline-offset-4">{product.reviews} reviews</a><span className="text-[10px] text-muted-foreground">· In love with this fit</span></div>
         <div className="mt-5 flex flex-wrap items-baseline gap-3 border-b border-border pb-5"><span className="text-xl font-semibold">{formatINR(product.price)}</span><span className="text-sm text-muted-foreground line-through">{formatINR(product.originalPrice)}</span><span className="border border-accent/40 px-2 py-1 text-[10px] font-semibold">YOU SAVE {product.discount}%</span></div>
