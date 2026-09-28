@@ -53,7 +53,7 @@ export function StoreProvider({ children }) {
     const savings = lines.reduce((sum, item) => sum + item.savings, 0);
     const gst = Math.round(subtotal * 0.05);
     const delivery = subtotal === 0 || subtotal >= 999 ? 0 : 59;
-    return { subtotal, savings, gst, delivery, total: subtotal + gst + delivery };
+    return { subtotal, savings, gst, delivery, total: subtotal + delivery };
   }, [lines]);
   const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
